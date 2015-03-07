@@ -1,0 +1,69 @@
+%!TEX TS-program = lualatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass{jdsummary}
+\usepackage[USenglish]{babel}
+
+\usepackage{jdcommands}
+\jdfontsetup{}
+
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+
+\title{Summary Risk Management}
+\author{JD}
+\updateheaders{}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+\begin{gdefi}
+\defi{Risk}{Unknown quantity at some future point in time.
+            \\&Magnitude is loosely: width of range of possible outcomes/variance}
+\defi{Capital}{FI's capital functions as buffer against potential future losses --- a protection against banktruptcy}
+\end{gdefi}
+
+\begin{sit}[Drivers of capital levels]
+\item Credit agencies' (implicit) requirements for a given rating level
+\item Management decisions in consideration of stakeholder interests and protection requirements
+\item Regulatory minimum capital requirements
+\end{sit}
+
+\begin{gdefi}[Capital]
+\defi{Economic}{Best estimate of required capital that FIs use internally to allocate the cost of maintaining regulatory capital. Should be in line with desired credit rating}
+\defi{Regulatory}{Amount of capital that FI needs to hold in order to fulfill regulatory requirements. Significant deviations from EC.}
+\end{gdefi}
+
+\begin{sit}[Regulator]
+\item Conflict of interest: Shareholders have limited liability --- after equity is depleted, debt holders and tax payers have to bear costs
+\end{sit}
+
+\begin{gdefi}[Relevance of Risk Management]
+\defi{FIs}{Measurement and Control of risk, Allocation of scarce resources/Optimization of profit wrt risk, Protection of instution}
+\defi{Regulator}{Measurement of FI risk exposure, protection of financial system}
+\end{gdefi}
+
+\section{Risk factors and risk mapping}
+Given a financial position with value $V_t$ at time $t$, determine the change of its value $\Delta V$ over a time horizon $(0,t)$.
+
+\begin{enumerate}
+  \item Express $V$ as a function (\textit{risk mapping}) of a set of \textit{risk factors} $\mathbf{Y_t}=(Y^1_t, \dots, Y^N_t)^T$.\\
+    f: $\mathbf{Y}_t \mapsto V_t$
+  \item Determine the change in value $\Delta V$ as a function of a factor changes\\
+    \begin{sit}[Exact]
+    \item $\Delta V = f(\mathbf{Y}_t) - f(\mathbf{Y}_0)$
+    \item Absolute change: Substituting $\mathbf{Y}_t = \mathbf{Y}_0 + \Delta \mathbf{Y}$ yields\\
+  $\Delta V = f(\mathbf{Y}_0 + \Delta \mathbf{Y}) - f(\mathbf{Y}_0)$
+    \end{sit}
+% 
+    \begin{sit}[Approximation ($n$-th order Taylor)]
+    \item $\Delta V \approx \frac{\partial}{\partial \mathbf{Y}_0} f(\mathbf{Y}_0) \cdot \Delta \mathbf{Y}$
+    \item Relative change: Substituting $\Delta \mathbf{Y} = \mathbf{Y}_0 \circ R(\mathbf{Y})$ yields\\
+      $\Delta V \approx \left(\mathbf{Y}_0 \circ \frac{\partial}{\partial \mathbf{Y}_0} f(\mathbf{Y}_0)\right) \cdot R(\mathbf{Y})$ \\
+      $R(\mathbf{Y}) = (\Delta Y^1/Y^1_0, \dots, \Delta Y^N_0/Y^N_0)^T$
+    \item A \textit{Delta Equivalent} $Y_0 \frac{\partial}{\partial y_i}f(\mathbf{Y}_0)$ maps (as a linear factor) a change in a given risk factor to a change in $V$
+    \end{sit}
+\end{enumerate}
+\end{document} 
